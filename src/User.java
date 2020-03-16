@@ -3,12 +3,14 @@
  * @author Tiffany 
  *
  */
-public class User {
-	private String name; 
-	private String schoolEmail; 
+public class User { 
+	private String schoolEmail;
+	private String schoolID; 
+	private String schoolName; 
+	private String firstName; 
+	private String lastName; 
 	private String password; 
 	private String dateOfBirth; 
-	private String ucid; 
 	
 	/**
 	 * Constructor
@@ -17,20 +19,44 @@ public class User {
 		
 	}
 	
-	public String getName() {
-		return this.name; 
-	}
-	
-	public void setName(String name) {
-		this.name = name; 
-	}
-	
 	public String getSchoolEmail() {
 		return this.schoolEmail; 
 	}
 	
 	public void setSchoolEmail(String schoolEmail) {
 		this.schoolEmail = schoolEmail; 
+	}
+	
+	public String getSchoolID() {
+		return this.schoolID; 
+	}
+	
+	public void setSchoolID(String schoolID) {
+		this.schoolID = schoolID; 
+	}
+	
+	public String getSchoolName() {
+		return this.schoolName; 
+	}
+	
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName; 
+	}
+	
+	public String getFirstName() {
+		return this.firstName; 
+	}
+	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName; 
+	}
+	
+	public String getLastName() {
+		return this.lastName; 
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName; 
 	}
 	
 	public String getPassword() {
@@ -47,13 +73,5 @@ public class User {
 	
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth; 
-	}
-	
-	public String getUcid() {
-		return this.ucid; 
-	}
-	
-	public void setUcid(String ucid) {
-		this.ucid = ucid; 
 	}
 }
