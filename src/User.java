@@ -23,7 +23,7 @@ public class User {
 		return this.schoolEmail; 
 	}
 	
-	public void setSchoolEmail(String schoolEmail) {
+	private void setSchoolEmail(String schoolEmail) {
 		this.schoolEmail = schoolEmail; 
 	}
 	
@@ -31,7 +31,7 @@ public class User {
 		return this.schoolID; 
 	}
 	
-	public void setSchoolID(String schoolID) {
+	private void setSchoolID(String schoolID) {
 		this.schoolID = schoolID; 
 	}
 	
@@ -39,7 +39,7 @@ public class User {
 		return this.schoolName; 
 	}
 	
-	public void setSchoolName(String schoolName) {
+	private void setSchoolName(String schoolName) {
 		this.schoolName = schoolName; 
 	}
 	
@@ -47,7 +47,7 @@ public class User {
 		return this.firstName; 
 	}
 	
-	public void setFirstName(String firstName) {
+	private void setFirstName(String firstName) {
 		this.firstName = firstName; 
 	}
 	
@@ -55,7 +55,7 @@ public class User {
 		return this.lastName; 
 	}
 	
-	public void setLastName(String lastName) {
+	private void setLastName(String lastName) {
 		this.lastName = lastName; 
 	}
 	
@@ -63,7 +63,7 @@ public class User {
 		return this.password; 
 	}
 	
-	public void setPassword(String password) {
+	private void setPassword(String password) {
 		this.password = password; 
 	}
 	
@@ -71,7 +71,7 @@ public class User {
 		return this.dateOfBirth; 
 	}
 	
-	public void setDateOfBirth(String dateOfBirth) {
+	private void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth; 
 	}
 }
