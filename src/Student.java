@@ -10,6 +10,7 @@ public class Student extends User {
 	private Scholarship pending;
 	private Scholarship awaiting;
 	private Scholarship notAccepted;
+	private int GPA;
 	
 	public Course getCourses() {
 		return courses;
@@ -35,5 +36,21 @@ public class Student extends User {
 	public void setNotAccepted(Scholarship notAccepted) {
 		this.notAccepted = notAccepted;
 	}
+	public int getGPA() {
+		return GPA;
+	}
+	public void setGPA(int gPA) {
+		GPA = gPA;
+	}
+	public boolean hasGrade(String grade) {
+		if(grade == "W" | grade == "F") {
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
 
 	
+}
