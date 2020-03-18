@@ -1,7 +1,7 @@
 package scholarship;
 
 /**
- * This is the initial User class created for iteration 2 
+ * This is the initial Student class created for iteration 2 
  * @author Shamim 
  *
  */
