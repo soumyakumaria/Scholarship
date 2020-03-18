@@ -19,7 +19,7 @@ public class Course {
 	 * Set the name of the course. 
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
+	private void setName(String name) {
 		this.name = name;
 	} 
 	
@@ -34,7 +34,8 @@ public class Course {
 	 * Set the course number. 
 	 * @param number the number to set
 	 */
-	public void setNumber(String number) {
+	private void setNumber(String number) {
 		this.number = number;
 	}
+
 }
