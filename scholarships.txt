@@ -1,0 +1,30 @@
+Scholarship 1
+3.6
+F
+100
+
+false
+you get this if you are good
+500
+Once per semester
+Four years
+Scholarship 2
+3.9
+C+
+1
+
+false
+you get this if you are really really good
+5000
+Once
+N/A
+test
+3.0
+W
+1000
+Student McGee, Leonard Manzara/Joe Shmoe, Thi Dinh
+false
+for dedicated students
+500.0
+Once per year
+four years
