@@ -121,14 +121,16 @@ public class LoginScreen {
 			public void actionPerformed(ActionEvent e) {
 				String inputUsr = textField.getText();
 				String inputPss =  	passwordField.getText();
-				if(login(inputUsr, inputPss)) {
-					JOptionPane.showMessageDialog(null, "the username and password are valid");
-					
-				}
-				else {
+				String userType = login(inputUsr, inputPss);
+				
+				if(userType.equals("student")) {
 					frame.dispose();
+					JOptionPane.showMessageDialog(null, "the user is a student");
+				} else if(userType.equals("scholarship coordinator")) {
+					frame.dispose();
+					JOptionPane.showMessageDialog(null, "the user is a scholarship coordinator");
+				} else {
 					JOptionPane.showMessageDialog(null, "the username and password are invalid");
-					
 				}
 				
 			}
@@ -139,8 +141,8 @@ public class LoginScreen {
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(235, 61, 185, 179);
 		frame.getContentPane().add(lblNewLabel);
-		ImageIcon img =new ImageIcon(this.getClass().getResource("/da58fd2d-2682-456a-a827-54e4b2dea8bd_200x200.png").getFile());
-		lblNewLabel.setIcon(img);
+		//ImageIcon img =new ImageIcon(this.getClass().getResource("/da58fd2d-2682-456a-a827-54e4b2dea8bd_200x200.png").getFile());
+		//lblNewLabel.setIcon(img);
 		
 		
 		
@@ -163,38 +165,41 @@ public class LoginScreen {
 			}
 		});
 	}
+	
+	
 	/**
 	 * This method checks if the email
 	 * and password input are valid
 	 * @param email
 	 * @param password
-	 * @return
+	 * @return true if login is successful, false otherwise.
 	 */
-	
-	public static boolean login(String email, String password) {
-		File users = new File("users.txt");
-		System.out.println(email + "   " + password);
-		try {
-			Scanner read = new Scanner(users);
-			String temp = "";
-			while(!temp.equals(email) && read.hasNextLine())
-				temp = read.nextLine();
-			
-			if(read.hasNextLine()) {
-				read.nextLine();
-				temp = read.nextLine();
-			} else {
-				return false;
+	public static String login(String email, String password) {
+		File users = new File("students.txt");
+		for(int i = 0; i <= 1; i++) {
+			try {
+				Scanner read = new Scanner(users);
+				String temp = " ";
+				while(!temp.equals(email) && read.hasNextLine())
+					temp = read.nextLine();
+				
+				if(read.hasNextLine()) {
+					read.nextLine();
+					temp = read.nextLine();
+				}
+				read.close();
+				if(temp.equals(password)) 
+					return i == 0 ? "student" : "scholarship coordinator";
+				
+				users = new File("coordinators.txt");
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				return "";
 			}
-			read.close();
-			if(!temp.equals(password)) {
-				return false;
-			}
-			
-			return true;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return false;
 		}
+		
+		return "";
+		
 	}
 }
