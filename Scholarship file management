@@ -1,0 +1,103 @@
+package Login;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+import scholarship.Scholarship;
+
+/**
+ * @author cam
+ * Methods used to read and write Scholarship objects to and from scholarships.txt. Not sure
+ * where these will be used, so I put them in this temporary class for now.
+ */
+public class Temp {
+
+	/**
+	 * Just a demo to test the methods.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Scholarship[] a = loadScholarships();
+		System.out.println(a.length);
+		for(Scholarship s : a) {
+			System.out.println(s.getName() + " " + s.getMinGPA() + " " + s.getAntirequisite() + " " + s.getDescription());
+		}
+		System.out.println(a[2].getNominations()[1]);
+	}
+	
+	/**
+	 * @return a list of all Scholarship objects stored in scholarships.txt.
+	 */
+	public static Scholarship[] loadScholarships() {
+		try {
+			File file = new File("scholarships.txt");
+			Scanner in = new Scanner(file);
+			int n = 0;
+			while(in.hasNextLine()) {
+				n++;
+				in.nextLine();
+			}
+			in = new Scanner(file);
+			Scholarship[] a = new Scholarship[n / 10];
+			
+			int i = 0;
+			while (i < (n / 10)) {
+				Scholarship s = new Scholarship();
+				s.setName(in.nextLine());
+				s.setMinGPA(in.nextLine());
+				s.setAntirequisite(in.nextLine());
+				s.setNumAvailable(Integer.parseInt(in.nextLine()));
+				s.setNominations(in.nextLine().split("/"));
+				s.setGrant(in.nextLine().equals("true"));
+				s.setDescription(in.nextLine());
+				s.setMoney(Double.parseDouble(in.nextLine()));
+				s.setFrequency(in.nextLine());
+				s.setDuration(in.nextLine());
+				a[i] = s;
+				i++;
+			}
+			
+			in.close();
+			return a;
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Saves a Scholarship object to scholarships.txt. WARNING: all 10 member variables
+	 * must be initialized or the method will throw an error.
+	 * @param s the Scholarship object to be saved.
+	 */
+	public static void saveScholarship(Scholarship s) {
+		try {
+			BufferedWriter w = new BufferedWriter(new FileWriter("scholarships.txt", true));
+			w.write("\n" + s.getName() + "\n");
+			w.write(s.getMinGPA() + "\n");
+			w.write(s.getAntirequisite() + "\n");
+			w.write(s.getNumAvailable() + "\n");
+			String nominations = "";
+			String[] temp = s.getNominations();
+			for(int i = 0; i < temp.length; i ++) {
+				nominations += temp[i];
+				if (i != temp.length - 1)
+					nominations += "/";
+			}
+			w.write(nominations + "\n");
+			w.write(s.isGrant() + "\n");
+			w.write(s.getDescription() + "\n");
+			w.write(s.getMoney() + "\n");
+			w.write(s.getFrequency() + "\n");
+			w.write(s.getDuration() + "\n");
+			w.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
