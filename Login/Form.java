@@ -47,7 +47,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 /**
- * @author Soumya Kumaria
+ * @author Soumya Kumaria and Cam Hermann
  * This class takes input from the user to create a new user and register such that
  * users can access the scholarship system
  */
