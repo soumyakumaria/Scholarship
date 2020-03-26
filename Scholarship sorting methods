@@ -1,0 +1,80 @@
+	/**
+	 * Used to reduce repetition in sorting methods. Removes all elements equal to null in
+	 * a given Scholarship array.
+	 * @param a Scholarship array
+	 * @return an array with the same Scholarships as the given array, but without null values.
+	 * Length may be different than that of the given array due to removed null values.
+	 */
+	private static Scholarship[] trimArray(Scholarship[] a) {
+		int n = 0;
+		for (Scholarship s : a) {
+			if (s != null)
+				n++;
+		}
+		Scholarship[] b = new Scholarship[n];
+		int m = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != null) 
+				b[i - m] = a[i];
+			else
+				m++;
+		}
+		return b;
+	}
+	
+	/**
+	 * Returns an array of all Scholarships with a required GPA less than or equal to
+	 * the given double.
+	 * @param a array of all Scholarships
+	 * @param GPA the desired GPA
+	 * @return
+	 */
+	public static Scholarship[] sortGPA(Scholarship[] a, double GPA) {
+		Scholarship[] b = new Scholarship[a.length];
+		for (int i = 0; i < a.length; i++) {
+			if (Double.parseDouble(a[i].getMinGPA()) <= GPA)
+				b[i] = a[i];
+		}
+		return trimArray(b);
+	}
+	
+	/**
+	 * Returns a list of all Scholarships that allow the given letter grade, as well as
+	 * all letter grades below it. E.g. all Scholarships with an antirequisite less than
+	 * the given letter grade. W is independent, so an antirequisite 'C' or 'F' etc can
+	 * still allow W's.
+	 * @param a array of all scholarships
+	 * @param grade the letter grade (W,F,D-,D,D+,C-,C,C+,B-,B,B+,A-,A,A+) to check against
+	 * antirequisites.
+	 * @return
+	 */
+	public static Scholarship[] sortAntirequisite(Scholarship[] a, String grade) {
+		String grades = "F,D-,D,D+,C-,C,C+,B-,B,B+,A-,A,A+";
+		if (grade.equalsIgnoreCase("W")) {
+			grades = "Ww";
+		} else {
+			grades = grades.substring(grades.indexOf(grade), grades.length());
+		}
+		Scholarship[] b = new Scholarship[a.length];
+		for (int i = 0; i < a.length; i++) {
+			if (!grades.contains(a[i].getAntirequisite()))
+				b[i] = a[i];
+		}
+		return trimArray(b);
+	}
+	
+	/**
+	 * Returns a list of all Scholarships that the given Student is legible for, based on
+	 * their GPA and individual letter grades.
+	 * @param a list of all Scholarships
+	 * @param s student to check against
+	 * @return
+	 */
+	public static Scholarship[] sortLegible(Scholarship[] a, Student s) {
+		Scholarship[] b = a;
+		for (Course c : s.getCourses()) {
+			b = sortAntirequisite(b, c.getGradeLetter());
+		}
+		return sortGPA(b, s.getGPA());
+	}
+	
