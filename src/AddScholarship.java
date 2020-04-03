@@ -28,7 +28,6 @@ public class AddScholarship {
 	private JTextField money;
 	private JTextField frequency;
 	private JTextField duration;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
