@@ -123,9 +123,12 @@ public class LoginScreen {
 				String inputPss =  	passwordField.getText();
 				String userType = login(inputUsr, inputPss);
 				
+				/**
+				 * If the user type that logs in is student, then StudentWindow is opened
+				 */
 				if(userType.equals("student")) {
 					frame.dispose();
-					JOptionPane.showMessageDialog(null, "the user is a student");
+					StudentWindow.main(args);
 				} else if(userType.equals("scholarship coordinator")) {
 					frame.dispose();
 					JOptionPane.showMessageDialog(null, "the user is a scholarship coordinator");
