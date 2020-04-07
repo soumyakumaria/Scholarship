@@ -1,3 +1,7 @@
+package users;
+
+import scholarship.Scholarship;
+
 /**
  * This is the initial User class created for iteration 2 
  * @author Tiffany 
@@ -31,7 +35,7 @@ public class User {
 	 * Set the user's school email. 
 	 * @param schoolEmail
 	 */
-	private void setSchoolEmail(String schoolEmail) {
+	public void setSchoolEmail(String schoolEmail) {
 		this.schoolEmail = schoolEmail; 
 	}
 
@@ -47,7 +51,7 @@ public class User {
 	 * Set the user's school ID
 	 * @param schoolID
 	 */
-	private void setSchoolID(String schoolID) {
+	public void setSchoolID(String schoolID) {
 		this.schoolID = schoolID; 
 	}
 	
@@ -63,7 +67,7 @@ public class User {
 	 * Set the user's school name. 
 	 * @param schoolName
 	 */
-	private void setSchoolName(String schoolName) {
+	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName; 
 	}
 	
@@ -79,7 +83,7 @@ public class User {
 	 * Set the user's first name. 
 	 * @param firstName
 	 */
-	private void setFirstName(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName; 
 	}
 	
@@ -95,7 +99,7 @@ public class User {
 	 * Set the user's last name. 
 	 * @param lastName
 	 */
-	private void setLastName(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName; 
 	}
 	
@@ -111,7 +115,7 @@ public class User {
 	 * Set the user's password. 
 	 * @param password
 	 */
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password; 
 	}
 	
@@ -127,7 +131,20 @@ public class User {
 	 * Set the user's date of birth. 
 	 * @param dateOfBirth
 	 */
-	private void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth; 
+	}
+	
+	/**
+	 * @param a array to add to
+	 * @param s Scholarship to add to the array
+	 * @return array a with s appended to it(will be greater in length than the original array).
+	 */
+	public static Scholarship[] addScholarship(Scholarship[] a, Scholarship s) {
+		Scholarship[] b = new Scholarship[a.length + 1];
+		for (int i = 0; i < a.length; i++)
+			b[i] = a[i];
+		b[a.length] = s;
+		return b;
 	}
 }
