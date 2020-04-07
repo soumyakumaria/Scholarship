@@ -18,6 +18,12 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.event.AncestorListener;
+
+import scholarship.Scholarship;
+import users.ScholarshipCoordinator;
+import users.Student;
+import users.User;
+
 import javax.swing.event.AncestorEvent;
 import java.util.Scanner;
 import java.io.File;
@@ -123,15 +129,15 @@ public class LoginScreen {
 				String inputPss =  	passwordField.getText();
 				String userType = login(inputUsr, inputPss);
 				
-				/**
-				 * If the user type that logs in is student, then StudentWindow is opened
-				 */
 				if(userType.equals("student")) {
 					frame.dispose();
+					JOptionPane.showMessageDialog(null, "the user is a student");
+					Student st = getStudent(inputUsr);
 					StudentWindow.main(args);
 				} else if(userType.equals("scholarship coordinator")) {
 					frame.dispose();
 					JOptionPane.showMessageDialog(null, "the user is a scholarship coordinator");
+					ScholarshipCoordinator sc = getCoordinator(inputUsr);
 				} else {
 					JOptionPane.showMessageDialog(null, "the username and password are invalid");
 				}
@@ -204,5 +210,125 @@ public class LoginScreen {
 		
 		return "";
 		
+	}
+	
+	/**
+	 * @param fileName the file to search
+	 * @param email the email to use in the search
+	 * @return the name of the user with the given email
+	 */
+	private static String findName(String fileName, String email) {
+		File f = new File(fileName);
+		try {
+			int i = -1;
+			String s = "";
+			Scanner in = new Scanner(f);
+			while(!s.equals(email)) {
+				i++;
+				s = in.nextLine();
+			}
+			
+			in = new Scanner(f);
+			for (int k = 0; k < i - 6; k++) {
+				in.nextLine();
+			}
+			
+			return in.nextLine();
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	/**
+	 * @param email the email of the Student
+	 * @return a Student object from the students file, corresponding to the
+	 * given email.
+	 */
+	private static Student getStudent(String email) {
+		String name = findName("students.txt", email);
+		Student st = new Student();
+		File f = new File("students.txt");
+		Scholarship[] sch = Utilities.loadScholarships();
+		try {
+			Scanner in = new Scanner(f);
+			while(!in.nextLine().equals(name));
+			st.setFirstName(name);
+			st.setLastName(in.nextLine());
+			st.setDateOfBirth(in.nextLine() + " " + in.nextLine() + " " + in.nextLine());
+			st.setSchoolName(in.nextLine());
+			st.setSchoolEmail(in.nextLine());
+			st.setSchoolID(in.nextLine());
+			st.setPassword(in.nextLine());
+			st.initializeScholarships();
+			String temp = in.nextLine();
+			for (String scholName : temp.split(",")) {
+				if(!scholName.equals(""))
+					st.addPending(Utilities.getScholarship(sch, scholName));
+			}
+			temp = in.nextLine();
+			for (String scholName : temp.split(",")) {
+				if(!scholName.equals(""))	
+					st.addAwaiting(Utilities.getScholarship(sch, scholName));
+			}
+			temp = in.nextLine();
+			for (String scholName : temp.split(",")) {
+				if(!scholName.equals(""))
+					st.addNotAccepted(Utilities.getScholarship(sch, scholName));
+			}
+			st.setGrades(in.nextLine());
+			in.close();
+			return st;
+				
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		return st;
+	}
+	
+	/**
+	 * @param email the email of the ScholarshipCoordinator
+	 * @return a ScholarshipCoordinator object from the coordinators file, 
+	 * corresponding to the given email.
+	 */
+	public static ScholarshipCoordinator getCoordinator(String email) {
+		String name = findName("coordinators.txt", email);
+		ScholarshipCoordinator c = new ScholarshipCoordinator();
+		File f = new File("coordinators.txt");
+		Scholarship[] sch = Utilities.loadScholarships();
+		try {
+			Scanner in = new Scanner(f);
+			while(!in.nextLine().equals(name));
+			c.setFirstName(name);
+			c.setLastName(in.nextLine());
+			c.setDateOfBirth(in.nextLine() + " " + in.nextLine() + " " + in.nextLine());
+			c.setSchoolName(in.nextLine());
+			c.setSchoolEmail(in.nextLine());
+			c.setSchoolID(in.nextLine());
+			c.setPassword(in.nextLine());
+			String temp = in.nextLine();
+			c.initializeScholarships();
+			for (String scholName : temp.split(",")) {
+				if(!scholName.equals(""))
+					c.addMyScholarship(Utilities.getScholarship(sch, scholName));
+			}
+			temp = in.nextLine();
+			for (String scholName : temp.split(",")) {
+				if(!scholName.equals(""))
+					c.addAwardedScholarship(Utilities.getScholarship(sch, scholName));
+			}
+			temp = in.nextLine();
+			for (String scholName : temp.split(",")) {
+				if(!scholName.equals(""))
+					c.addPendingScholarship(Utilities.getScholarship(sch, scholName));
+			}
+			in.close();
+			return c;
+				
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		return c;
 	}
 }
