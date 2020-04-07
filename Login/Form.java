@@ -8,11 +8,11 @@ import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import net.miginfocom.swing.MigLayout;
+//import com.jgoodies.forms.layout.FormLayout;
+//import com.jgoodies.forms.layout.ColumnSpec;
+//import com.jgoodies.forms.layout.RowSpec;
+//import com.jgoodies.forms.layout.FormSpecs;
+//import net.miginfocom.swing.MigLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -47,7 +47,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 /**
- * @author Soumya Kumaria and Cam Hermann
+ * @author Soumya Kumaria
  * This class takes input from the user to create a new user and register such that
  * users can access the scholarship system
  */
@@ -190,14 +190,19 @@ public class Form {
 						studentID.write(writer);
 						writer.append("\n");
 						passwordField.write(writer);
-						writer.append("\n ");
+						writer.append("\n\n\n");
+						if(filename.equals("coordinators.txt"))
+							writer.append("\n");
 						writer.close();
 						frame.dispose();
+						if(filename.equals("students.txt"))
+							GradesForm.main(args);
+						else
+							LoginScreen.main(args);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 					
-					LoginScreen.main(args);
 				}
 				
 				
