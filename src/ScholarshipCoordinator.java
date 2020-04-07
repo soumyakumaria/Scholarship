@@ -1,6 +1,10 @@
+package users;
+
+import scholarship.Scholarship;
+
 /**
  * This is the initial ScholarshipCoordinator class created for iteration 2 
- * @author Tiffany
+ * @author Tiffany, cam
  *
  */
 public class ScholarshipCoordinator extends User{
@@ -11,10 +15,33 @@ public class ScholarshipCoordinator extends User{
 	private String[] recipients; 
 	
 	/**
-	 * Constructor for the class. 
+	 * Sets all Scholarship arrays to a length of 0
 	 */
-	public ScholarshipCoordinator() {
-		
+	public void initializeScholarships() {
+		myScholarships = new Scholarship[0];
+		awardedScholarships = new Scholarship[0];
+		pendingScholarships = new Scholarship[0];
+	}
+	
+	/**
+	 * @param s add this Scholarship to awardedScholarships
+	 */
+	public void addMyScholarship(Scholarship s) {
+		myScholarships = addScholarship(myScholarships, s);
+	}
+	
+	/**
+	 * @param s add this Scholarship to myScholarships
+	 */
+	public void addAwardedScholarship(Scholarship s) {
+		awardedScholarships = addScholarship(awardedScholarships, s);
+	}
+	
+	/**
+	 * @param s add this Scholarship to pendingScholarships
+	 */
+	public void addPendingScholarship(Scholarship s) {
+		pendingScholarships = addScholarship(pendingScholarships, s);
 	}
 
 	/**
