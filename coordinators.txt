@@ -1,0 +1,59 @@
+Logan
+Tanner
+1994
+January
+1
+University of Edmonton
+LTanner@EdU.ca
+123456789
+password
+
+
+
+Rick
+Grimes
+2020
+January
+1
+University of Edmonton
+RG@EdU.ca
+123456789
+pass
+
+
+
+Thomas
+Larder
+1983
+March
+15
+University of Calgary
+TLarder1@ucalgary.ca
+465978132
+drowssap
+
+
+
+Lara
+Crofter
+1998
+September
+14
+Emerging University
+LCrofter@Emu.ca
+468795123
+security101
+
+
+Paul
+Blart
+1970
+September
+4
+University of Calgary
+PBlart1@ucalgary.ca
+591734682
+pocllam
+
+
+
