@@ -1,0 +1,65 @@
+cam
+hermann
+2000
+February
+29
+University of Calgary
+cam.hermann1@ucalgary.ca
+123456789
+pass
+
+
+
+A+,B-,W,F,A,C+,A,A
+Ron
+Swanson
+1975
+January
+7
+University of Calgary
+RSwanson@ucalgary.ca
+456478941
+password
+
+
+
+F,D+,D+,D+,B-,B-,B-,B-,B-,B-,B+,B+,A,A,A,A+,W
+Jesse
+Jean
+1997
+June
+2
+University of Waterloo
+JJean2@uwaterloo.ca
+4575895612
+pass
+
+
+
+F,C,B-,B-,B-,B-,B-,B-,B-,B,B,B+,B+,A,A,A,A,A+,A+,A+,W,W
+Brian
+Fergus
+2001
+July
+29
+Emerging University
+BFergus1@emU.ca
+456987123
+123password456
+
+
+
+C+,C+,B+,B+,A-,A-,A-,A-,A-,A+,A+,A+,A,A,A,A+,A+,W
+Hugh
+Jackson
+2000
+December
+25
+Emerging University
+HJackson2@Emu.ca
+647931258
+wolverine
+
+
+
+C,C,C,C,B-,B-,B-,B-,B-,A,W
