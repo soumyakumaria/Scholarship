@@ -33,7 +33,7 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 /**
  * 
- * @author Soumya Kumaria, Cam Hermann
+ * @author Soumya Kumaria, Cam Hermann, Tiffany Tang
  * This class creates the login screen for
  * the user.
  *
