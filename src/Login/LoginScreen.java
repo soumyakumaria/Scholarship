@@ -49,7 +49,9 @@ public class LoginScreen {
 	private JLabel lblPassword;
 	private JButton btnLogin;
 	private JLabel lblNewLabel;
-
+	public static String name; 
+	public static String id; 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -131,14 +133,16 @@ public class LoginScreen {
 				
 				if(userType.equals("student")) {
 					frame.dispose();
-					JOptionPane.showMessageDialog(null, "the user is a student");
-					Student st = getStudent(inputUsr);
-					System.out.println(st.getFirstName());
 					StudentWindow.main(args);
+					Student st = getStudent(inputUsr);
+					name = st.getFirstName() + " " + st.getLastName(); 
+					id = st.getSchoolID(); 
 				} else if(userType.equals("scholarship coordinator")) {
-					frame.dispose();
-					JOptionPane.showMessageDialog(null, "the user is a scholarship coordinator");
-					ScholarshipCoordinator sc = getCoordinator(inputUsr);
+					frame.dispose(); 
+					ScholarshipCoordinatorScreen.main(args);
+					ScholarshipCoordinator sc = getCoordinator(inputUsr); 
+					name = sc.getFirstName() + " " + sc.getLastName(); 
+					id = sc.getSchoolID(); 
 				} else {
 					JOptionPane.showMessageDialog(null, "the username and password are invalid");
 				}
