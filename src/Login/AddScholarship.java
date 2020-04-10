@@ -30,6 +30,7 @@ public class AddScholarship {
 	private JTextField money;
 	private JTextField frequency;
 	private JTextField duration;
+	private static final String[] args = null;
 
 	/**
 	 * Launch the application.
@@ -215,11 +216,14 @@ public class AddScholarship {
 						writer.append("\n"); 
 						writer.close(); 
 						frame.dispose(); 
-						
+						JOptionPane.showMessageDialog(null, "New scholarship has been succesfully added.");
+						ScholarshipCoordinatorScreen.main(args);
 					} catch (IOException e1){
 						e1.printStackTrace();
 					}
 					
+				} else {
+					JOptionPane.showMessageDialog(null, "Error! Text fields cannot be empty!");
 				}
 			}
 		});
@@ -250,5 +254,16 @@ public class AddScholarship {
 		lblLetterGradesAt.setFont(new Font("Arial", Font.ITALIC, 11));
 		lblLetterGradesAt.setBounds(10, 111, 144, 15);
 		frame.getContentPane().add(lblLetterGradesAt);
+		
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose(); 
+				ScholarshipCoordinatorScreen.main(args);
+			}
+		});
+		btnNewButton.setFont(new Font("Arial", Font.BOLD, 13));
+		btnNewButton.setBounds(10, 399, 73, 19);
+		frame.getContentPane().add(btnNewButton);
 	}
 }
