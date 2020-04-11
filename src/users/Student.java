@@ -8,7 +8,7 @@ import scholarship.Scholarship;
  *
  */
 public class Student extends User {
-	private String grades;
+	private String grades="";
 	private Scholarship[] pending;
 	private Scholarship[] awaiting;
 	private Scholarship[] notAccepted;
@@ -83,7 +83,7 @@ public class Student extends User {
 	/**
 	 * @return grades, formatted as: "A,A+,F,B-,..."
 	 */
-	public String getGrades() {
+	public  String getGrades() {
 		return grades;
 	}
 
@@ -101,7 +101,7 @@ public class Student extends User {
 	public double getGPA() {
 		String[] letters = new String[] {"F", "D", "D+", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"};
 		double[] numbers = new double[] {0, 1, 1.3, 1.7, 2, 2.3, 2.7, 3, 3.3, 3.7, 4, 4};
-		String[] gradesArr = grades.split(",");
+		String[] gradesArr = getGrades().split(",");
 		double cumulativeGPA = 0;
 		int wCount = 0;
 		for (String s : gradesArr) {
@@ -127,6 +127,8 @@ public class Student extends User {
 	public boolean hasGrade(String grade) {
 		return grades.contains(grade);
 	}
+	
+	
 
 
 	
