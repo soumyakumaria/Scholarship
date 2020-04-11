@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import scholarship.ViewScholarship;
+import users.Student;
+
 public class StudentWindow {
 	/**
 	 * 
@@ -21,6 +24,7 @@ public class StudentWindow {
 	 */
 	private static final String[] args = null;
 	private JFrame frame;
+	public static Student st;
 
 	/**
 	 * Launch the application.
@@ -38,6 +42,11 @@ public class StudentWindow {
 		});
 	}
 
+	public static void start(Student s) {
+        st = s;
+        String[] args = new String[0];
+        main(args);
+    }
 	/**
 	 * Create the application.
 	 */
@@ -82,6 +91,12 @@ public class StudentWindow {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("View Scholarships");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				ViewScholarship.main(args);
+			}
+		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 13));
 		btnNewButton_1.setBounds(188, 191, 154, 29);
 		frame.getContentPane().add(btnNewButton_1);
