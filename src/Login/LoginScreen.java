@@ -51,7 +51,7 @@ public class LoginScreen {
 	private JLabel lblNewLabel;
 	public static String name; 
 	public static String id; 
-	
+	public static Student s;
 	/**
 	 * Launch the application.
 	 */
@@ -133,10 +133,11 @@ public class LoginScreen {
 				
 				if(userType.equals("student")) {
 					frame.dispose();
-					StudentWindow.main(args);
-					Student st = getStudent(inputUsr);
-					name = st.getFirstName() + " " + st.getLastName(); 
-					id = st.getSchoolID(); 
+					//StudentWindow.main(args);
+					s = getStudent(inputUsr);
+					name = s.getFirstName() + " " + s.getLastName(); 
+					id = s.getSchoolID(); 
+					StudentWindow.start(s);
 				} else if(userType.equals("scholarship coordinator")) {
 					frame.dispose(); 
 					ScholarshipCoordinatorScreen.main(args);
