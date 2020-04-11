@@ -54,6 +54,11 @@ public class ViewScholarship {
 		});
 	}
 
+	public Student getStudent() {
+		
+		return null;
+		
+	}
 	/**
 	 * Create the application.
 	 */
@@ -235,6 +240,7 @@ public class ViewScholarship {
 		
 		
 	}
+	
 
 
 	/**
