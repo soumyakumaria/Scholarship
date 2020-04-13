@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 /**
  * @author cam
@@ -114,7 +115,7 @@ public class CoordViewScholarships {
 		 */
 		myScholBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				infoArea.setText(getScholText((String)myScholBox.getSelectedItem()));
+				infoArea.setText(Utilities.getScholText((String)myScholBox.getSelectedItem()));
 				
 			}
 		});
@@ -125,7 +126,7 @@ public class CoordViewScholarships {
 		 */
 		pendingBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String text = getScholText((String)pendingBox.getSelectedItem()) + "\n\n Applicants(not yet approved): ";
+				String text = Utilities.getScholText((String)pendingBox.getSelectedItem()) + "\n\n Applicants(not yet approved): ";
 				for (Student s : Utilities.filterByPending(Utilities.getScholarship(a, (String)pendingBox.getSelectedItem()))) 
 					text += s.getFirstName() + " " + s.getLastName() + ", ";
 				text = endList(text);
@@ -153,7 +154,7 @@ public class CoordViewScholarships {
 		 */
 		allScholarships.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				infoArea.setText(getScholText((String)allScholarships.getSelectedItem()));
+				infoArea.setText(Utilities.getScholText((String)allScholarships.getSelectedItem()));
 			}
 		});
 		
@@ -163,7 +164,7 @@ public class CoordViewScholarships {
 		 */
 		awardedBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String text = getScholText((String)awardedBox.getSelectedItem()) + "\n\n Recipients: ";
+				String text = Utilities.getScholText((String)awardedBox.getSelectedItem()) + "\n\n Recipients: ";
 				for (Student s : Utilities.filterByAccepted(Utilities.getScholarship(a, (String)awardedBox.getSelectedItem()))) 
 					text += s.getFirstName() + " " + s.getLastName() + ", ";
 				text = endList(text);
@@ -192,42 +193,49 @@ public class CoordViewScholarships {
 			}
 		});
 		
+		JLabel lblScholarshipInfo = new JLabel("Scholarship Info:");
+		lblScholarshipInfo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
 		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(53)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblScholarshipYouCan)
+							.addComponent(lblScholarshipInfo, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(lblScolarshipsGPA)
+								.addComponent(lblScholarshipYouCan)
 								.addContainerGap())
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblAllScholarships)
+									.addComponent(lblScolarshipsGPA)
 									.addContainerGap())
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 									.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(lblAwardedScholarships, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblAllScholarships)
 										.addContainerGap())
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(awardedBox, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE)
+											.addComponent(lblAwardedScholarships, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
 											.addContainerGap())
-										.addGroup(groupLayout.createSequentialGroup()
-											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(pendingBox, Alignment.LEADING, 0, 458, Short.MAX_VALUE)
-												.addComponent(myScholBox, Alignment.LEADING, 0, 458, Short.MAX_VALUE)
-												.addGroup(groupLayout.createSequentialGroup()
-													.addComponent(allScholarships, 0, 333, Short.MAX_VALUE)
-													.addGap(18)
-													.addComponent(viewApplicants))
-												.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
-											.addGap(32))))))))
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+											.addGroup(groupLayout.createSequentialGroup()
+												.addComponent(awardedBox, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE)
+												.addContainerGap())
+											.addGroup(groupLayout.createSequentialGroup()
+												.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+													.addComponent(pendingBox, Alignment.LEADING, 0, 458, Short.MAX_VALUE)
+													.addComponent(myScholBox, Alignment.LEADING, 0, 458, Short.MAX_VALUE)
+													.addGroup(groupLayout.createSequentialGroup()
+														.addComponent(allScholarships, 0, 333, Short.MAX_VALUE)
+														.addGap(18)
+														.addComponent(viewApplicants))
+													.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
+												.addGap(32)))))))))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap(230, Short.MAX_VALUE)
 					.addComponent(done, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
@@ -254,16 +262,17 @@ public class CoordViewScholarships {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(allScholarships, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(viewApplicants))
-					.addGap(57)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+					.addComponent(lblScholarshipInfo)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(done)
-					.addContainerGap())
+					.addGap(23))
 		);
 		
 		scrollPane.setViewportView(infoArea);
 		frame.getContentPane().setLayout(groupLayout);
-		
 		
 	}
 	
@@ -278,30 +287,6 @@ public class CoordViewScholarships {
 		} else {
 			s += "none";
 		}
-		return s;
-	}
-	
-	/**
-	 * @param scholName name of scholarship.
-	 * @return s general information about the scholarship with name scholName.
-	 */
-	private static String getScholText(String scholName) {
-		Scholarship sch = Utilities.getScholarship(Utilities.loadScholarships(), scholName);
-		String nominations = "";
-		
-		for (String tmp : sch.getNominations())
-			nominations += tmp;
-		String s = "";
-		s += " Description: " + sch.getDescription() 
-		  + "\n Minimum GPA: " + sch.getMinGPA()
-		  + "\n Antirequisite: " + sch.getAntirequisite()
-		  + "\n Number available: " + (sch.getNumAvailable() - Utilities.filterByAccepted(sch).length) + " out of " + sch.getNumAvailable() + " remaining"
-		  + "\n Nominations: " + (nominations.equals("") ? "none" : nominations) 
-		  + "\n Grant: " + (sch.isGrant() ? "yes" : "no") 
-		  + "\n Money: $" + sch.getMoney()
-		  + "\n Frequency: " + sch.getFrequency()
-		  + "\n Duration: " + sch.getDuration();
-		
 		return s;
 	}
 	
