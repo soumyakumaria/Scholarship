@@ -7,7 +7,7 @@ University of Edmonton
 LTanner@EdU.ca
 123456789
 password
-
+Westlake Award for Excellence,University of Edmonton: Financial Support,University of Victoria: Financial Support,University of Waterloo: Financial Help
 
 
 Rick
@@ -54,6 +54,3 @@ University of Calgary
 PBlart1@ucalgary.ca
 591734682
 pocllam
-
-
-
