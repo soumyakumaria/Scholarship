@@ -9,8 +9,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import scholarship.Scholarship;
+import users.ScholarshipCoordinator;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -31,7 +34,8 @@ public class AddScholarship {
 	private JTextField money;
 	private JTextField frequency;
 	private JTextField duration;
-	private static final String[] args = null;
+	
+	public static ScholarshipCoordinator sc;
 
 	/**
 	 * Launch the application.
@@ -47,6 +51,12 @@ public class AddScholarship {
 				}
 			}
 		});
+	}
+	
+	public static void start(ScholarshipCoordinator s) {
+		sc = s;
+		String[] args = new String[0];
+		main(args);
 	}
 
 	/**
@@ -180,51 +190,27 @@ public class AddScholarship {
 				if(!name.getText().equals("") && !minGPA.getText().equals("") && !antirequisite.getText().equals("") &&
 						!numAvailable.getText().equals("") && !description.getText().equals("") && !money.getText().equals("")
 						&& !frequency.getText().equals("") && !duration.getText().equals("")) {
-					String filename = "scholarships.txt"; 
-					try {
-						FileWriter writer = new FileWriter(filename, true);
-						name.write(writer); 
-						writer.append("\n"); 
-						minGPA.write(writer);
-						writer.append("\n"); 
-						antirequisite.write(writer); 
-						writer.append("\n"); 
-						numAvailable.write(writer);
-						writer.append("\n"); 
-						if (!nominations.getText().equals("")) {
-							nominations.write(writer);
-							writer.append("\n"); 
-						}
-						else {
-							writer.append(""); 
-							writer.append("\n"); 
-						}
-						if (!grant.getText().equals("")) {
-							grant.write(writer);
-							writer.append("\n"); 
-						}
-						else {
-							writer.append(""); 
-							writer.append("\n"); 
-						}
-						description.write(writer);
-						writer.append("\n"); 
-						money.write(writer);
-						writer.append("\n"); 
-						frequency.write(writer); 
-						writer.append("\n"); 
-						duration.write(writer);
-						writer.append("\n"); 
-						writer.close(); 
-						frame.dispose(); 
-						JOptionPane.showMessageDialog(null, "New scholarship has been succesfully added.");
-						ScholarshipCoordinatorScreen.main(args);
-					} catch (IOException e1){
-						e1.printStackTrace();
-					}
 					
-				} else {
-					JOptionPane.showMessageDialog(null, "Error! Text fields cannot be empty!");
+					Scholarship sch = new Scholarship();
+					sch.setName(name.getText());
+					sch.setMinGPA(minGPA.getText());
+					sch.setAntirequisite(antirequisite.getText());
+					sch.setNumAvailable(Integer.parseInt(numAvailable.getText()));
+					if (!nominations.getText().equals("")) {
+						sch.setNominations(nominations.getText().split("/")); 
+					} else {
+						sch.setNominations(new String[0]); 
+					}
+					sch.setGrant(grant.getText().equalsIgnoreCase("true"));
+					sch.setDescription(description.getText());
+					sch.setMoney(Double.parseDouble(money.getText()));
+					sch.setFrequency(frequency.getText());
+					sch.setDuration(duration.getText());
+					Utilities.saveScholarship(sch);
+					Utilities.appendScholarship("coordinators.txt", 1, sch, sc);
+					sc.addMyScholarship(sch);
+					frame.dispose();
+					ScholarshipCoordinatorScreen.start(sc);
 				}
 			}
 		});
@@ -255,16 +241,5 @@ public class AddScholarship {
 		lblLetterGradesAt.setFont(new Font("Arial", Font.ITALIC, 11));
 		lblLetterGradesAt.setBounds(10, 111, 144, 15);
 		frame.getContentPane().add(lblLetterGradesAt);
-		
-		JButton btnNewButton = new JButton("Back");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose(); 
-				ScholarshipCoordinatorScreen.main(args);
-			}
-		});
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 13));
-		btnNewButton.setBounds(10, 399, 73, 19);
-		frame.getContentPane().add(btnNewButton);
 	}
 }
