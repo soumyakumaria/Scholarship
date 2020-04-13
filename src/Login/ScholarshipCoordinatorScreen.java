@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
+import scholarship.CoordViewScholarships;
+import users.ScholarshipCoordinator;
+
 /**
  * This is the homepage screen for the scholarship coordinator when they successfully logged in. 
  * @author Tiffany Tang
@@ -22,7 +25,8 @@ import javax.swing.JTextField;
 public class ScholarshipCoordinatorScreen {
 
 	private JFrame frame;
-	private static final String[] args = null; 
+	private static final String[] args = null;
+	public static ScholarshipCoordinator sc;
 
 	/**
 	 * Launch the application.
@@ -38,6 +42,12 @@ public class ScholarshipCoordinatorScreen {
 				}
 			}
 		});
+	}
+	
+	public static void start(ScholarshipCoordinator s) {
+		sc = s;
+		String[] args = new String[0];
+		main(args);
 	}
 
 	/**
@@ -94,6 +104,13 @@ public class ScholarshipCoordinatorScreen {
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 13));
 		btnNewButton_1.setBounds(133, 168, 154, 29);
 		frame.getContentPane().add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				CoordViewScholarships.start((sc));
+			}
+		});
+		
 		
 		/**
 		 * This allows for the user to go to the add scholarship form to create a new scholarship. 
@@ -102,7 +119,7 @@ public class ScholarshipCoordinatorScreen {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				AddScholarship.main(args);
+				AddScholarship.start(sc);
 			}
 		});
 		btnNewButton_2.setFont(new Font("Arial", Font.BOLD, 13));
@@ -113,26 +130,26 @@ public class ScholarshipCoordinatorScreen {
 		 * This label will display the name of the user that logged in. This is from the name variable in 
 		 * the LoginScreen class. 
 		 */
-		JLabel lblNewLabel_2 = new JLabel(LoginScreen.name);
-		lblNewLabel_2.setBounds(123, 81, 92, 26);
+		JLabel lblNewLabel_2 = new JLabel(sc.getFirstName() + " " + sc.getLastName()/*LoginScreen.name*/);
+		lblNewLabel_2.setBounds(173, 81, 92, 26);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		/**
 		 * This label will display the id of the user that logged in. This is from the id variable in 
 		 * the LoginScreen class. 
 		 */
-		JLabel lblNewLabel_3 = new JLabel(LoginScreen.id);
-		lblNewLabel_3.setBounds(123, 111, 92, 26);
+		JLabel lblNewLabel_3 = new JLabel(sc.getSchoolID()/*LoginScreen.id*/);
+		lblNewLabel_3.setBounds(173, 111, 92, 26);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Student Name:");
+		JLabel lblNewLabel_4 = new JLabel("Coordinator Name:");
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(21, 81, 94, 26);
+		lblNewLabel_4.setBounds(21, 81, 131, 26);
 		frame.getContentPane().add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Student ID:");
+		JLabel lblNewLabel_5 = new JLabel("School ID:");
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
-		lblNewLabel_5.setBounds(45, 111, 70, 26);
+		lblNewLabel_5.setBounds(82, 111, 70, 26);
 		frame.getContentPane().add(lblNewLabel_5);
 		
 	}
