@@ -3,7 +3,7 @@ package Login;
 /**
  * This class takes inputs from a scholarship coordinator to add a new scholarship to the system. 
  * 
- * @author Tiffany 
+ * @author Tiffany, cam 
  */
 import java.awt.EventQueue;
 
@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class AddScholarship {
 
@@ -73,7 +74,7 @@ public class AddScholarship {
 	 */
 	private void initialize() {
 		frame = new JFrame("Add a scholarship");
-		frame.setBounds(100, 100, 486, 500);
+		frame.setBounds(100, 100, 486, 541);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -179,6 +180,41 @@ public class AddScholarship {
 		frame.getContentPane().add(duration);
 		duration.setColumns(10);
 		
+		String[] days = new String[31];
+		for(int i = 1; i < 32; i++)
+			days[i - 1] = Integer.toString(i);
+		
+		String[] months = new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		
+		String[] years = new String[10];
+		for(int i = 2030; i > 2020; i--) {
+			years[2030 - i] = Integer.toString(i);
+		}
+		
+		String[] levels = new String[] {"Department", "Faculty", "University", "Province-wide", "Nation-wide"};
+		
+		String[] types = new String[] {"Undergraduate", "Master's", "PHD", "Post-Graduate", "Open to all"};
+		
+		JComboBox levelBox = new JComboBox(levels);
+		levelBox.setBounds(60, 372, 125, 26);
+		frame.getContentPane().add(levelBox);
+		
+		JComboBox typeBox = new JComboBox(types);
+		typeBox.setBounds(298, 374, 144, 26);
+		frame.getContentPane().add(typeBox);
+		
+		JComboBox monthBox = new JComboBox(months);
+		monthBox.setBounds(155, 416, 110, 26);
+		frame.getContentPane().add(monthBox);
+		
+		JComboBox dayBox = new JComboBox(days);
+		dayBox.setBounds(275, 416, 51, 26);
+		frame.getContentPane().add(dayBox);
+		
+		JComboBox yearBox = new JComboBox(years);
+		yearBox.setBounds(336, 416, 103, 26);
+		frame.getContentPane().add(yearBox);
+		
 		JButton btnNewButton_1 = new JButton("Submit");
 		/**
 		 * This method is an action listener that writes all the input information on the add scholarship page 
@@ -206,6 +242,9 @@ public class AddScholarship {
 					sch.setMoney(Double.parseDouble(money.getText()));
 					sch.setFrequency(frequency.getText());
 					sch.setDuration(duration.getText());
+					sch.setAcceptDeclineDate((String)monthBox.getSelectedItem() + " " + (String)dayBox.getSelectedItem() + ", " + (String)yearBox.getSelectedItem());
+					sch.setLevel((String)levelBox.getSelectedItem());
+					sch.setStudentType((String)typeBox.getSelectedItem());
 					Utilities.saveScholarship(sch);
 					Utilities.appendScholarship("coordinators.txt", 1, sch, sc);
 					sc.addMyScholarship(sch);
@@ -215,7 +254,7 @@ public class AddScholarship {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 13));
-		btnNewButton_1.setBounds(189, 382, 84, 26);
+		btnNewButton_1.setBounds(183, 465, 84, 26);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JLabel lblcanBeLeft = new JLabel("(Can be left blank)");
@@ -241,5 +280,21 @@ public class AddScholarship {
 		lblLetterGradesAt.setFont(new Font("Arial", Font.ITALIC, 11));
 		lblLetterGradesAt.setBounds(10, 111, 144, 15);
 		frame.getContentPane().add(lblLetterGradesAt);
+		
+		JLabel lblLevel = new JLabel("Level:");
+		lblLevel.setFont(new Font("Arial", Font.BOLD, 13));
+		lblLevel.setBounds(10, 377, 39, 15);
+		frame.getContentPane().add(lblLevel);
+		
+		JLabel lblDeadline = new JLabel("Deadline:");
+		lblDeadline.setFont(new Font("Arial", Font.BOLD, 13));
+		lblDeadline.setBounds(84, 418, 61, 15);
+		frame.getContentPane().add(lblDeadline);
+		
+		JLabel lblStudentType = new JLabel("Student Type:");
+		lblStudentType.setFont(new Font("Arial", Font.BOLD, 13));
+		lblStudentType.setBounds(195, 377, 93, 15);
+		frame.getContentPane().add(lblStudentType);
+		
 	}
 }
