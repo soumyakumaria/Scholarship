@@ -5,13 +5,12 @@ import scholarship.Scholarship;
 /**
  * This is the initial Student class created for iteration 2 
  * @author Shamim, cam 
- *
  */
 public class Student extends User {
 	private String grades="";
 	private Scholarship[] pending;
 	private Scholarship[] awaiting;
-	private Scholarship[] notAccepted;
+	private Scholarship[] accepted;
 	
 	
 	/**
@@ -20,7 +19,7 @@ public class Student extends User {
 	public void initializeScholarships() {
 		pending = new Scholarship[0];
 		awaiting = new Scholarship[0];
-		notAccepted = new Scholarship[0];
+		accepted = new Scholarship[0];
 	}
 	
 	/**
@@ -38,10 +37,10 @@ public class Student extends User {
 	}
 	
 	/**
-	 * @param s add this Scholarship to notAccepted
+	 * @param s add this Scholarship to accepted
 	 */
-	public void addNotAccepted(Scholarship s) {
-		notAccepted = addScholarship(notAccepted, s);
+	public void addAccepted(Scholarship s) {
+		accepted = addScholarship(accepted, s);
 	}
 
 	/**
@@ -61,11 +60,11 @@ public class Student extends User {
 	}
 
 	/**
-	 * Get the list of not accepted scholarships. 
-	 * @return the notAccepted
+	 * Get the list of accepted scholarships. 
+	 * @return the accepted
 	 */
-	public Scholarship[] getNotAccepted() {
-		return notAccepted;
+	public Scholarship[] getAccepted() {
+		return accepted;
 	}
 	
 	public void setPending(Scholarship[] pending) {
@@ -76,8 +75,8 @@ public class Student extends User {
 		this.awaiting = awaiting;
 	}
 
-	public void setNotAccepted(Scholarship[] notAccepted) {
-		this.notAccepted = notAccepted;
+	public void setAccepted(Scholarship[] accepted) {
+		this.accepted = accepted;
 	}
 
 	/**
