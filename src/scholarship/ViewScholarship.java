@@ -37,6 +37,7 @@ import javax.swing.JTextField;
 public class ViewScholarship {
 
 	private JFrame frame;
+	private static final String[] args = null;
 
 	/**
 	 * Launch the application.
@@ -72,6 +73,12 @@ public class ViewScholarship {
 	private void initialize() {
 		frame = new JFrame();
 		JButton btnApply = new JButton("Apply");
+		btnApply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				AddSupportingDocuments.main(args);
+			}
+		});
 		
 		JTextArea textArea = new JTextArea();
 		JScrollPane scrollPane = new JScrollPane();
