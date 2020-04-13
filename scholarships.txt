@@ -38,3 +38,33 @@ Financial support for dedicated students.
 500
 Once
 N/A
+University of Edmonton: Financial Support
+3.2
+F
+150
+
+false
+The university of Edmonton is offering financial support to post secondary students in need.
+300.0
+Once per semester
+Two years
+University of Victoria: Financial Support
+3.3
+F
+100
+
+false
+The University of Victoria is offering financial assistance to students with a GPA of 3.3 or higher.
+400.0
+Once per semester
+Three years
+University of Waterloo: Financial Help
+3.1
+F
+300
+
+false
+The University of Waterloo will provide annual support for outstanding students.
+500.0
+Once per year
+4 years
