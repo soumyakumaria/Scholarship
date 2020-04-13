@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import scholarship.Scholarship;
-import users.ScholarshipCoordinator;
 import users.Student;
 import users.User;
 
@@ -32,10 +31,10 @@ public class Utilities {
 				in.nextLine();
 			}
 			in = new Scanner(file);
-			Scholarship[] a = new Scholarship[n / 10];
+			Scholarship[] a = new Scholarship[n / 13];
 			
 			int i = 0;
-			while (i < (n / 10)) {
+			while (i < (n / 13)) {
 				Scholarship s = new Scholarship();
 				s.setName(in.nextLine());
 				s.setMinGPA(in.nextLine());
@@ -47,6 +46,9 @@ public class Utilities {
 				s.setMoney(Double.parseDouble(in.nextLine()));
 				s.setFrequency(in.nextLine());
 				s.setDuration(in.nextLine());
+				s.setAcceptDeclineDate(in.nextLine());
+				s.setLevel(in.nextLine());
+				s.setStudentType(in.nextLine());
 				a[i] = s;
 				i++;
 			}
@@ -84,6 +86,9 @@ public class Utilities {
 			w.write(s.getMoney() + "\n");
 			w.write(s.getFrequency() + "\n");
 			w.write(s.getDuration() + "\n");
+			w.write(s.getAcceptDeclineDate() + "\n");
+			w.write(s.getLevel() + "\n");
+			w.write(s.getStudentType() + "\n");
 			w.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -259,6 +264,11 @@ public class Utilities {
 		return arr;
 	}
 	
+	/**
+	 * @param a Scholarship array to search.
+	 * @param sch Scholarship to search for.
+	 * @return whether sch is in a.
+	 */
 	private static boolean schArrayContains(Scholarship[] a, Scholarship sch) {
 		for (Scholarship temp : a) {
 			if (temp.getName().equals(sch.getName()))
@@ -346,6 +356,7 @@ public class Utilities {
 				fileContents += in.nextLine() + "\n";
 			in.close();
 			a = fileContents.split("\n");
+			a[a.length - 1] = "\n";
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -404,4 +415,36 @@ public class Utilities {
 		overwriteFile(fileName, a);
 	}
 	
+	/**
+	 * @param scholName name of scholarship.
+	 * @return s general information about the scholarship named scholName.
+	 */
+	public static String getScholText(String scholName) {
+		Scholarship sch = Utilities.getScholarship(Utilities.loadScholarships(), scholName);
+		String nominations = "";
+		
+		for (String tmp : sch.getNominations())
+			nominations += tmp;
+		String s = "";
+		s += " Description: " + sch.getDescription() 
+		  + "\n Minimum GPA: " + sch.getMinGPA()
+		  + "\n Antirequisite: " + sch.getAntirequisite()
+		  + "\n Number available: " + (sch.getNumAvailable() - filterByAccepted(sch).length) + " out of " + sch.getNumAvailable() + " remaining"
+		  + "\n Nominations: " + (nominations.equals("") ? "none" : nominations) 
+		  + "\n Grant: " + (sch.isGrant() ? "yes" : "no") 
+		  + "\n Money: $" + sch.getMoney()
+		  + "\n Frequency: " + sch.getFrequency()
+		  + "\n Duration: " + sch.getDuration()
+		  + "\n Accept/decline deadline: " + sch.getAcceptDeclineDate()
+		  + "\n Level: " + sch.getLevel()
+		  + "\n Student type: " + sch.getStudentType();
+		
+		return s;
+	}
+	
 }
+
+
+
+
+
