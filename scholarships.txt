@@ -8,6 +8,9 @@ Westlake wishes to encourage academic growth in our future generations.
 2500
 Each semester
 Four years
+June 3, 2021
+Nation wide
+Open to all
 Harvard Award for Academic Excellence
 4
 B-
@@ -18,6 +21,9 @@ Harvard is offering significant financial assistance to outstanding students.
 10000
 Once per year
 Duration of studies as full time student, up to six years.
+June 3, 2021
+University
+Open to all
 Husky Cares: Academic Support
 3.4
 F
@@ -28,6 +34,9 @@ Husky will provide financial support to committed students to help support futur
 1000
 Once
 N/A
+June 3, 2021
+Nation wide
+Open to all
 University of Calgary: Full Time Student Financial Assistance
 3.5
 F
@@ -38,6 +47,9 @@ Financial support for dedicated students.
 500
 Once
 N/A
+June 3, 2021
+University
+Undergraduate
 University of Edmonton: Financial Support
 3.2
 F
@@ -48,6 +60,9 @@ The university of Edmonton is offering financial support to post secondary stude
 300.0
 Once per semester
 Two years
+June 3, 2021
+University
+Open to all
 University of Victoria: Financial Support
 3.3
 F
@@ -58,6 +73,9 @@ The University of Victoria is offering financial assistance to students with a G
 400.0
 Once per semester
 Three years
+June 3, 2021
+University
+Open to all
 University of Waterloo: Financial Help
 3.1
 F
@@ -68,3 +86,45 @@ The University of Waterloo will provide annual support for outstanding students.
 500.0
 Once per year
 4 years
+June 3, 2021
+University
+Open to all
+Emerging University: financial support
+3.3
+F
+50
+
+false
+Emerging University will provide financial assistance to students in need.
+300.0
+Once per semester
+Four years
+June 3, 2021
+University
+Open to all
+Alberta Gov: Financial help for students in need
+3.2
+F
+150
+
+false
+Include reason for need in attached document.
+500.0
+Once per semester
+Four years
+July 5, 2021
+Province-wide
+Open to all
+BC student financial assistance
+3.0
+F
+1000
+
+false
+Money for Post-secondary students
+250.0
+Each semester
+Four years
+June 1, 2021
+Province-wide
+Open to all
