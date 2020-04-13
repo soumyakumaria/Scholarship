@@ -16,7 +16,34 @@ public class Scholarship {
 	private double money;
 	private String frequency;
 	private String duration;
+	private String acceptDeclineDate;
+	private String level;
+	private String studentType;
 	
+	public String getAcceptDeclineDate() {
+		return acceptDeclineDate;
+	}
+
+	public void setAcceptDeclineDate(String acceptDeclineDate) {
+		this.acceptDeclineDate = acceptDeclineDate;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getStudentType() {
+		return studentType;
+	}
+
+	public void setStudentType(String studentType) {
+		this.studentType = studentType;
+	}
+
 	public String getName() {
 		return name;
 	}
