@@ -7,9 +7,9 @@ University of Calgary
 cam.hermann1@ucalgary.ca
 123456789
 pass
+Harvard Award for Academic Excellence,Husky Cares: Academic Support
 
-
-
+Westlake Award for Excellence
 A+,B-,W,F,A,C+,A,A
 Ron
 Swanson
@@ -22,7 +22,7 @@ RSwanson@ucalgary.ca
 password
 
 
-
+Harvard Award for Academic Excellence
 F,D+,D+,D+,B-,B-,B-,B-,B-,B-,B+,B+,A,A,A,A+,W
 Jesse
 Jean
@@ -33,7 +33,7 @@ University of Waterloo
 JJean2@uwaterloo.ca
 4575895612
 pass
-
+Westlake Award for Excellence
 
 
 F,C,B-,B-,B-,B-,B-,B-,B-,B,B,B+,B+,A,A,A,A,A+,A+,A+,W,W
@@ -47,7 +47,7 @@ BFergus1@emU.ca
 456987123
 123password456
 
-
+Harvard Award for Academic Excellence,Husky Cares: Academic Support
 
 C+,C+,B+,B+,A-,A-,A-,A-,A-,A+,A+,A+,A,A,A,A+,A+,W
 Hugh
@@ -61,5 +61,5 @@ HJackson2@Emu.ca
 wolverine
 
 
-
-C,C,C,C,B-,B-,B-,B-,B-,A,W
+Westlake Award for Excellence
+C+,C+,B+,B+,A-,A-,A-,A-,A-,A+,A+,A+,A,A,A,A+,A+,W
