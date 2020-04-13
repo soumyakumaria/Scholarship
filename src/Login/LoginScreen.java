@@ -15,22 +15,13 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import javax.swing.event.AncestorListener;
 
 import scholarship.Scholarship;
 import users.ScholarshipCoordinator;
 import users.Student;
-import users.User;
 
-import javax.swing.event.AncestorEvent;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
 /**
  * 
  * @author Soumya Kumaria, Cam Hermann, Tiffany Tang
@@ -52,6 +43,7 @@ public class LoginScreen {
 	public static String name; 
 	public static String id; 
 	public static Student s;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -124,7 +116,6 @@ public class LoginScreen {
 		 * The action listener starts listening only after the Log In button 
 		 * is pressed.
 		 */
-	
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String inputUsr = textField.getText();
@@ -133,15 +124,14 @@ public class LoginScreen {
 				
 				if(userType.equals("student")) {
 					frame.dispose();
-					//StudentWindow.main(args);
 					s = getStudent(inputUsr);
 					name = s.getFirstName() + " " + s.getLastName(); 
 					id = s.getSchoolID(); 
 					StudentWindow.start(s);
 				} else if(userType.equals("scholarship coordinator")) {
 					frame.dispose(); 
-					ScholarshipCoordinatorScreen.main(args);
-					ScholarshipCoordinator sc = getCoordinator(inputUsr); 
+					ScholarshipCoordinator sc = getCoordinator(inputUsr);
+					ScholarshipCoordinatorScreen.start(sc);
 					name = sc.getFirstName() + " " + sc.getLastName(); 
 					id = sc.getSchoolID(); 
 				} else {
@@ -281,7 +271,7 @@ public class LoginScreen {
 			temp = in.nextLine();
 			for (String scholName : temp.split(",")) {
 				if(!scholName.equals(""))
-					st.addNotAccepted(Utilities.getScholarship(sch, scholName));
+					st.addAccepted(Utilities.getScholarship(sch, scholName));
 			}
 			st.setGrades(in.nextLine());
 			in.close();
