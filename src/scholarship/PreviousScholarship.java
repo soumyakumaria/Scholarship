@@ -41,6 +41,12 @@ public class PreviousScholarship {
 			}
 		});
 	}
+	
+	public static void start(Student s) {
+        st = s;
+        String[] args = new String[0];
+        main(args);
+    }
 
 	/**
 	 * Create the application.
@@ -125,17 +131,21 @@ public class PreviousScholarship {
 			public void actionPerformed(ActionEvent e) {
 				String temp = (String) AwaitingComboBox.getSelectedItem();
 				
-				//Utilities.appendScholarship("student.txt", 3 , Utilities.getScholarship(a, temp), st);
+				
+				Utilities.appendScholarship("students.txt", 3 , Utilities.getScholarship(a, temp), st);
+				Utilities.removeScholarship("students.txt", 2 , Utilities.getScholarship(a, temp), st);
 				
 				
 			}
 		});
 		btnAccept.setBounds(38, 283, 97, 25);
 		frame.getContentPane().add(btnAccept);
-		//Mising Code
+		
 		JButton btnDecline = new JButton("Decline");
 		btnDecline.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String temp = (String) AwaitingComboBox.getSelectedItem();
+				Utilities.removeScholarship("students.txt", 2 , Utilities.getScholarship(a, temp), st);
 			}
 		});
 		btnDecline.setBounds(325, 283, 97, 25);
