@@ -95,7 +95,7 @@ public class StudentWindow {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				ViewScholarship.main(args);
+				ViewScholarship.start(st);
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 13));
@@ -131,7 +131,7 @@ public class StudentWindow {
 		JButton btnPreviousScholarships = new JButton("Previous Scholarships");
 		btnPreviousScholarships.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PreviousScholarship.main(args);
+				PreviousScholarship.start(st);
 				
 			}
 		});
