@@ -24,7 +24,7 @@ import java.util.Scanner;
 import java.io.IOException;
 /**
  * 
- * @author Soumya Kumaria, Cam Hermann, Tiffany Tang
+ * @author Soumya Kumaria, Cam Hermann, Tiffany Tang, Shamim Khalili
  * This class creates the login screen for
  * the user.
  *
