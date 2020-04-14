@@ -356,7 +356,9 @@ public class Utilities {
 				fileContents += in.nextLine() + "\n";
 			in.close();
 			a = fileContents.split("\n");
+		
 			a[a.length - 1] = "\n";
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
