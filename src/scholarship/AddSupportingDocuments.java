@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import users.Student;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -12,6 +15,8 @@ public class AddSupportingDocuments {
 
 	private JFrame frame;
 	private static final String[] args = null;
+	public static Student st;
+	public static Scholarship sch;
 
 	/**
 	 * Launch the application.
@@ -28,6 +33,12 @@ public class AddSupportingDocuments {
 			}
 		});
 	}
+	
+	public static void start(Student s) {
+        st = s;
+        String[] args = new String[0];
+        main(args);
+    }
 
 	/**
 	 * Create the application.
