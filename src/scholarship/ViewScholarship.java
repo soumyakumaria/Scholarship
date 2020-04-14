@@ -38,6 +38,8 @@ public class ViewScholarship {
 
 	private JFrame frame;
 	private static final String[] args = null;
+	public static Student st;
+	public static Scholarship sch;
 
 	/**
 	 * Launch the application.
@@ -54,6 +56,12 @@ public class ViewScholarship {
 			}
 		});
 	}
+	
+	public static void start(Student s) {
+        st = s;
+        String[] args = new String[0];
+        main(args);
+    }
 
 	public Student getStudent() {
 		
@@ -72,13 +80,6 @@ public class ViewScholarship {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		JButton btnApply = new JButton("Apply");
-		btnApply.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				AddSupportingDocuments.main(args);
-			}
-		});
 		
 		JTextArea textArea = new JTextArea();
 		JScrollPane scrollPane = new JScrollPane();
@@ -138,37 +139,7 @@ public class ViewScholarship {
 			public void actionPerformed(ActionEvent e) {
 				String temp = "";
 				temp = (String) gpaScholarshipName.getSelectedItem();
-				File scholarships = new File("scholarships.txt");
-				System.out.println(temp);
-				String info ="";
-				
-				
-				
-				for(int i = 0; i <1; i++) {
-					Scanner read = null;
-					
-					try {
-						read = new Scanner(scholarships);
-						while(read.hasNextLine()) {
-							if(read.nextLine().equals(temp)) {
-								for(int j=0; j<9;j++) {
-									info = info+read.nextLine()+"\n";
-								 
-								}
-								textArea.setText(info);
-								
-							}
-							
-						
-						}
-					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-					read.close();
-					
-				}
+				textArea.setText(Utilities.getScholText(temp));
 				
 			}
 		});
@@ -182,38 +153,7 @@ public class ViewScholarship {
 			public void actionPerformed(ActionEvent e) {
 				String temp = "";
 				temp = (String) sortLegibleComboBox.getSelectedItem();
-				File scholarships = new File("scholarships.txt");
-				System.out.println(temp);
-				String info ="";
-				
-				
-				
-				for(int i = 0; i <1; i++) {
-					Scanner read = null;
-					
-					try {
-						read = new Scanner(scholarships);
-						while(read.hasNextLine()) {
-							if(read.nextLine().equals(temp)) {
-								for(int j=0; j<9;j++) {
-									info = info+read.nextLine()+"\n";
-								 
-								}
-								textArea.setText(info);
-								
-							}
-							
-						
-						}
-					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-					read.close();
-					
-				}
-				
+				textArea.setText(Utilities.getScholText(temp));
 			
 				
 			}
@@ -229,41 +169,26 @@ public class ViewScholarship {
 				
 				String temp = "";
 				temp = (String) scholarshipName.getSelectedItem();
-				File scholarships = new File("scholarships.txt");
-				System.out.println(temp);
-				String info ="";
+				textArea.setText(Utilities.getScholText(temp));
 				
-				
-				
-				for(int i = 0; i <1; i++) {
-					Scanner read = null;
-					
-					try {
-						read = new Scanner(scholarships);
-						while(read.hasNextLine()) {
-							if(read.nextLine().equals(temp)) {
-								for(int j=0; j<9;j++) {
-									info = info+read.nextLine()+"\n";
-								 
-								}
-								textArea.setText(info);
-								
-							}
-							
-						
-						}
-					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					
-					read.close();
-					
-				}
 				
 			}
 			
 		});
+		
+		JButton btnApply = new JButton("Apply");
+		//action listener for apply
+		btnApply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.dispose();
+				String temp = (String)scholarshipName.getSelectedItem();
+				Utilities.appendScholarship("students.txt", 1 , Utilities.getScholarship(Utilities.loadScholarships(), temp), st);
+				
+				AddSupportingDocuments.main(args);
+			}
+		});
+		
 		
 		
 		scholarshipName.setToolTipText("Select");
