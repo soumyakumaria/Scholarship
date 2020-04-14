@@ -146,8 +146,6 @@ public class LoginScreen {
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(235, 61, 185, 179);
 		frame.getContentPane().add(lblNewLabel);
-		//ImageIcon img =new ImageIcon(this.getClass().getResource("/da58fd2d-2682-456a-a827-54e4b2dea8bd_200x200.png").getFile());
-		//lblNewLabel.setIcon(img);
 		
 		
 		
