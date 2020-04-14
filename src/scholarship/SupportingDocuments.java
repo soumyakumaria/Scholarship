@@ -1,7 +1,6 @@
 package scholarship;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -24,8 +23,13 @@ import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import net.miginfocom.swing.MigLayout;
+
 import java.awt.FlowLayout;
+/**
+ * This class is used to add supporting documents while applying for a scholarship.
+ * @author Soumya Kumaria
+ *
+ */
 
 public class SupportingDocuments {
 
@@ -79,6 +83,8 @@ public class SupportingDocuments {
 		/**
 		 * Some of the code for this action listener is taken from:
 		 *          //https://www.javatpoint.com/java-jfilechooser
+		 * This action listener is used when the open menu item is chosen from file menu
+		 * It is used to open the selected file and display its content in the text area.
 		 */
 		mntmOpen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -105,6 +111,9 @@ public class SupportingDocuments {
 		});
 		
 		JMenuItem mntmUpload = new JMenuItem("Upload");
+		/**
+		 * This action listener uploads the contents of the text area into a text file.
+		 */
 		mntmUpload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fc=new JFileChooser();
