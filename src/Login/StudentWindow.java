@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import scholarship.PreviousScholarship;
 import scholarship.ViewScholarship;
 import users.Student;
 
@@ -90,7 +91,7 @@ public class StudentWindow {
 		btnNewButton.setBounds(417, 36, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("View Scholarships");
+		JButton btnNewButton_1 = new JButton("Apply for Scholarships");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -98,7 +99,7 @@ public class StudentWindow {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 13));
-		btnNewButton_1.setBounds(188, 191, 154, 29);
+		btnNewButton_1.setBounds(188, 191, 198, 29);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		/**
@@ -126,5 +127,16 @@ public class StudentWindow {
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_5.setBounds(45, 111, 70, 26);
 		frame.getContentPane().add(lblNewLabel_5);
+		
+		JButton btnPreviousScholarships = new JButton("Previous Scholarships");
+		btnPreviousScholarships.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PreviousScholarship.main(args);
+				
+			}
+		});
+		btnPreviousScholarships.setFont(new Font("Arial", Font.BOLD, 13));
+		btnPreviousScholarships.setBounds(186, 227, 200, 25);
+		frame.getContentPane().add(btnPreviousScholarships);
 	}
 }
