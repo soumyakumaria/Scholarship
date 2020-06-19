@@ -4,7 +4,7 @@ A software that awards scholarships to university students is created. There are
 ## Tools Used
 * IDE: Eclipse
 ## Installation
-* Clone the complete repository on your local computer.
+* Clone the complete repository on your local computer. Using the link : 
 * Open Eclipse other IDEs can be used as well
 * Select File Tab
 * Select Open Projects from File System
