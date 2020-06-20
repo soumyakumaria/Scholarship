@@ -1,0 +1,50 @@
+Westlake Award for Excellence
+3.9
+F
+3
+
+false
+Westlake wishes to encourage academic growth in our future generations.
+2500
+Each semester
+Four years
+Harvard Award for Academic Excellence
+4
+B-
+1
+
+false
+Harvard is offering significant financial assistance to outstanding students.
+10000
+Once per year
+Duration of studies as full time student, up to six years.
+Husky Cares: Academic Support
+3.4
+F
+150
+
+false
+Husky will provide financial support to committed students to help support future generations.
+1000
+Once
+N/A
+University of Calgary: Full Time Student Financial Assistance
+3.5
+F
+100
+
+false
+Financial support for dedicated students.
+500
+Once
+N/A
+Try
+2.5
+F
+7
+
+false
+play
+1000
+1
+4 months
